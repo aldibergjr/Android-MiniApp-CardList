@@ -1,5 +1,4 @@
 package test.berg.cardlist;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -29,7 +28,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CardList extends AppCompatActivity {
-    Exercicios andei = new Exercicios("Andar","20");
+    Exercicios newe = new Exercicios("Andar","20");
     ArrayList<Exercicios> exercicios = new ArrayList<Exercicios>();
     Adaptador adaptador = new Adaptador(this,exercicios);
     PopupWindow insert = new PopupWindow();
@@ -64,9 +63,7 @@ public class CardList extends AppCompatActivity {
                 recyclerView, new ClickListener() {
             @Override
             public void onPositionClicked(View view, final int position) {
-                //Values are passing to activity & to fragment as well
-                Toast.makeText(getApplicationContext(), "Single Click on position        :"+position,
-                        Toast.LENGTH_SHORT).show();
+         
                 currentclicked = position;
                 novo = false;
                 Newexer(view);
@@ -119,7 +116,7 @@ public class CardList extends AppCompatActivity {
                     EditText minutos = (EditText) CustomView.findViewById(R.id.minutos);
                     EditText nome = (EditText) CustomView.findViewById(R.id.nome);
                     Exercicios e = new Exercicios(nome.getText().toString(), minutos.getText().toString());
-                    andei = e;
+                    newe = e;
                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                     imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
                     Stfpop(CustomView);
@@ -139,7 +136,6 @@ public class CardList extends AppCompatActivity {
 
                     EditText newminutos = (EditText) CustomView.findViewById(R.id.minutos);
                     EditText newnome = (EditText) CustomView.findViewById(R.id.nome);
-                    //exercicios.set(currentclicked,new Exercicios(newnome.getText().toString(), newminutos.getText().toString()));
                     ChangeItem(new Exercicios(newnome.getText().toString(), newminutos.getText().toString()+" minutos"));
                     novo = true;
                     insert.dismiss();
@@ -191,8 +187,6 @@ public class CardList extends AppCompatActivity {
                     String c = v.getResources().getResourceEntryName(v.getId()).replace(v.getResources().getResourceEntryName(v.getId()).substring(v.getResources().getResourceEntryName(v.getId()).length()-1),"");
                     quantos = (int)b;
                     ImageButton a = (ImageButton)v;
-                    Toast.makeText(getApplicationContext(), "Single Click on position        :"+getResources().getResourceEntryName(cores[0].getId()),
-                            Toast.LENGTH_SHORT).show();
                     for(int i = 0;i<quantos;i++)
                     {
 
@@ -206,7 +200,7 @@ public class CardList extends AppCompatActivity {
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addItem(andei);
+                addItem(newe)
                 insert.dismiss();
                 satisf.dismiss();
 
